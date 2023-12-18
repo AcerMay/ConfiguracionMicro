@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: administracion-service
+          uri: lb://administracion-service
+          predicates:
+            - Path=/prestamo/**
+            - Path=/devolucion/**
+        - id: proyector-service
+          uri: lb://proyector-service
+          predicates:
+            - Path=/proyector/**
+        - id: profesor-service
+          uri: lb://profesor-service
+          predicates:
+            - Path=/profesor/**
