@@ -17,10 +17,14 @@ spring:
             allowed-headers: "*"
             allow-credentials: true
       routes:
-        - id: administracion-service
+        - id: administracion-service-devolucion
           uri: http://localhost:8082
           predicates:
             - Path=/devolucion/**
+        - id: administracion-service-prestamo
+          uri: http://localhost:8082
+          predicates:
+            - Path=/prestamo/**
         - id: proyector-service
           uri: http://localhost:8083
           predicates:
